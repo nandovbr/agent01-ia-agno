@@ -1,5 +1,6 @@
 from agno.agent import Agent
-from agno.models.google import Gemini
+# from agno.models.google import Gemini
+from agno.models.openai import OpenAIResponses
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -14,12 +15,7 @@ agent = Agent(
         "Não invente nada. Priorize sites e artigos oficiais e referências de boa qualidade.",
         "Use o ValyuTools para buscar em artigos e o DuckDuckGoTools para buscar na internet."
     ],
-    model=Gemini(
-        id="gemini-2.0-flash",
-        vertexai=True,
-        project_id="agente_de_copy_corretor",
-        location="us-central1",
-    ),
+    model=OpenAIResponses(id="gpt-4o")
 )
 
-print(agent.print_response("plano de saúde sa UNIMED"))
+print(agent.print_response("plano de saúde da UNIMED"))
